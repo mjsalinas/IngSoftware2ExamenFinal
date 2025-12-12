@@ -1,15 +1,13 @@
-import {
-  IncomeMovement,
-  ExpenseMovement,
-  TransferMovement,
-  RefundMovement,
-} from "./Movement";
+import { Deposit } from "./Deposit";
+import { Withdrawal } from "./Withdrawal";
+import { Transfer } from "./Transfer";
+import { Payment } from "./Payment";
 
 const registry = {
-  INCOME: IncomeMovement,
-  EXPENSE: ExpenseMovement,
-  TRANSFER: TransferMovement,
-  REFUND: RefundMovement,
+  deposit: Deposit,
+  withdrawal: Withdrawal,
+  transfer: Transfer,
+  payment: Payment,
 };
 
 export class MovementFactory {
@@ -17,9 +15,15 @@ export class MovementFactory {
     registry[type] = clazz;
   }
 
-  static create(type, props) {
+  static create(data) {
+    const type = data.type;
     const Clazz = registry[type];
-    if (!Clazz) throw new Error(`Unknown movement type: ${type}`);
-    return new Clazz(props);
+
+    if (!Clazz) {
+      console.error("Tipo desconocido:", type);
+      return null;
+    }
+
+    return new Clazz(data);
   }
 }
