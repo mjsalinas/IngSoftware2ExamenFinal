@@ -2,6 +2,9 @@ import { Deposit } from "./Deposit";
 import { Withdrawal } from "./Withdrawal";
 import { Transfer } from "./Transfer";
 import { Payment } from "./Payment";
+import { Fee } from "./Fee";
+
+
 
 const registry = {
   deposit: Deposit,
