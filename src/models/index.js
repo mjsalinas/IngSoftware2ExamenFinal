@@ -3,3 +3,4 @@ export { Deposit } from './Deposit';
 export { Withdrawal } from './Withdrawal';
 export { Transfer } from './Transfer';
 export { Payment } from './Payment';
+export { } from './movementFactory';
